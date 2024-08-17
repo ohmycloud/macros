@@ -20,11 +20,7 @@ macro_rules! my_vec {
     // 匹配末尾可能的逗号
     ($($x:expr),+ $(,)?) => {
         {
-            let mut temp_vec = Vec::new();
-            $(
-                temp_vec.push($x);
-            )*
-            temp_vec
+            <[_]>::into_vec(Box::new([$($x),*]))
         }
     };
 }
